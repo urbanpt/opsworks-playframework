@@ -10,5 +10,3 @@ recipe "play::deploy_app", "Deploys a Play! application that was previously buil
 recipe "play::play_app_service", "Defines the application as a service."
 recipe "play::start_app", "Starts the Play! application service."
 recipe "play::stop_app", "Stops the Play! application service."
-
-depends "s3" # For fetching Play! framework from S3 bucket
