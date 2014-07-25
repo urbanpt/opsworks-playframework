@@ -32,7 +32,7 @@ start() {
                 exit 0;
         else
                 touch $LOCKFILE
-                $PLAY_APP_BIN start >/dev/null 2>&1 &
+                $PLAY_APP_BIN >/dev/null 2>&1 &
                 RETVAL=$?
                 PID=$!
                 echo $PID > $PIDFILE
@@ -53,7 +53,7 @@ status() {
 
 stop() {
         echo -n "Stopping $prog: "
-        $PLAY_APP_BIN stop >/dev/null 2>&1 &
+        ps ax | grep $procident | grep -v grep | awk '{print $1}' | xargs kill
         RETVAL=$?
         rm -f $LOCKFILE
         rm -f $PIDFILE
