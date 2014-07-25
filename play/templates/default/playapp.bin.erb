@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+TimeZone=-Duser.timezone=Europe/Lisbon
+<%= @startscript %> -Xms<%= @xms %> -Xmx<%= @xmx %> -Duniquename=<%= node[:play][:app][:proc_ident] %> $TimeZone $APP_OPTS
