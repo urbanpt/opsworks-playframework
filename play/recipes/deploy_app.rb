@@ -31,7 +31,7 @@ if node[:play][:app][:found]
       variables(
         :xms => xms,
         :xmx => xmx,
-        :startscript => "play #{deploy[:current_path]}/application start"
+        :startscript => "play start #{deploy[:current_path]}/application"
         )
       mode '750'
       action :create

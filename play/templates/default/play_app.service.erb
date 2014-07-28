@@ -2,9 +2,6 @@
 #
 # playapp        Daemon script for a Play! application
 
-# Source function library.
-./etc/rc.d/init.d/functions
-
 prog=playapp
 procident=<%= node[:play][:app][:proc_ident] %>
 PIDFILE="/var/run/$procident.pid"
@@ -49,7 +46,7 @@ stop() {
         rm -f $LOCKFILE
         rm -f $PIDFILE
         if [ $RETVAL -eq 0 ]; then
-                success $"$prog stopped"
+                echo $"$prog stopped"
         fi       
         return $RETVAL
 }
