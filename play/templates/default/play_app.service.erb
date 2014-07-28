@@ -8,7 +8,7 @@
 prog=playapp
 procident=<%= node[:play][:app][:proc_ident] %>
 PIDFILE="/var/run/$procident.pid"
-LOCKFILE=/var/lock/subsys/$procident
+LOCKFILE=/var/lock/$procident
 PLAY_APP_BIN=<%= node[:play][:app][:bin_path] %>
 
 # Ensure bin file exists
