@@ -3,7 +3,7 @@
 # playapp        Daemon script for a Play! application
 
 # Source function library.
-. /etc/rc.d/init.d/functions
+./etc/rc.d/init.d/functions
 
 prog=playapp
 procident=<%= node[:play][:app][:proc_ident] %>
@@ -15,15 +15,6 @@ PLAY_APP_BIN=<%= node[:play][:app][:bin_path] %>
 test -x $PLAY_APP_BIN || { echo "$PLAY_APP_BIN not installed";
         if [ "$1" = "stop" ]; then exit 0;
         else exit 5; fi; }
-
-# Ensure config file exists
-config=<%= node[:play][:app][:config_file] %>
-test -r $config || { echo "$config doesn't exist!";
-        if [ "$1" = "stop" ]; then exit 0;
-        else exit 6; fi; }
-
-. $config
-
 
 start() {
         echo -n "Starting $prog: "
