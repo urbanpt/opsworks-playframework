@@ -12,7 +12,7 @@ if node[:play][:app][:found]
   
   bash "deploy-play-app-dist" do
     code <<-EOH
-    mv #{deploy[:current_path]}/conf/production.conf #{deploy[:current_path]}/conf/application.conf
+    mv #{deploy[:current_path]}/application/conf/production.conf #{deploy[:current_path]}/application/conf/application.conf
     EOH
   end
   
@@ -31,7 +31,7 @@ if node[:play][:app][:found]
       variables(
         :xms => xms,
         :xmx => xmx,
-        :startscript => "play #{deploy[:current_path]} start"
+        :startscript => "play #{deploy[:current_path]}/application start"
         )
       mode '750'
       action :create
