@@ -19,9 +19,16 @@ if node[:play][:app][:found]
     app application
   end
   
-  # Build/package application
+  # Clean/Dependencies
   execute "build-play-app-dist" do
-    command "#{node[:play][:bin_path]} precompile"
+    command "#{node[:play][:bin_path]} clean #{deploy[:current_path]}/application/"
+    command "#{node[:play][:bin_path]} deps #{deploy[:current_path]}/application/"
+  end
+
+  # Precompile
+  execute "build-play-app-dist" do
+    command "#{node[:play][:bin_path]} precompile #{deploy[:current_path]}/application/"
     cwd "#{deploy[:current_path]}"
   end
+  
 end

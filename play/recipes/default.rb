@@ -1,3 +1,6 @@
-node[:deploy].each do |application, deploy|
-  default[:deploy][application][:deploy_to] = "/var/play/#{application}"
-end
+bash "setup-iptables" do
+    user "root"
+    code <<-EOH
+    iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to 9000
+    EOH
+  end
