@@ -12,7 +12,7 @@ default[:play][:dist][:version] = '1.2.5'
 default[:play][:bin_path] = '/usr/local/bin/play'
 default[:play][:app][:path] = '/var/play/'
 default[:play][:app][:bin_path] = '/usr/local/bin/play_app'
-
+default[:play][:app][:proc_ident] = 'playappserver'
 # Detect if a Play! application exists in this OpsWorks stack
 node[:deploy].each do |application, deploy|
   if !node[:play][:app][:found] && deploy[:application_type] == "other" && application.start_with?(node[:play][:app][:identifier])
