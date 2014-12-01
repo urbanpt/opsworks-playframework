@@ -10,11 +10,11 @@ if node[:play][:app][:found]
   # Ensure Play! application has been built
   include_recipe "play::build_app"
   
-  bash "deploy-play-app-dist" do
-    code <<-EOH
-    mv #{deploy[:current_path]}/application/conf/production.conf #{deploy[:current_path]}/application/conf/application.conf
-    EOH
-  end
+  #bash "deploy-play-app-dist" do
+   # code <<-EOH
+    #mv #{deploy[:current_path]}/application/conf/production.conf #{deploy[:current_path]}/application/conf/application.conf
+    #EOH
+  #end
   
   include_recipe "play::play_app_service"
   
